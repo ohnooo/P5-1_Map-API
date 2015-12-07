@@ -9,14 +9,14 @@
 			zoom: 4
 		});
 
-		var geocoder = new google.maps.Geocoder();
+		// var geocoder = new google.maps.Geocoder();
 		//Set zoom increments
 		/*map.addListener('click', function(){
 		map.setZoom(8);
 
 		});*/
 
-		geocodeAddress(geocoder, map);
+		geocodeAddress();
 
 		function getLocationNames(){
 			var locationNames = [];
@@ -30,9 +30,17 @@
 
 		function setMarker(placeData){
 
+			// Save location data from the search result to local variables
+			var lat = placeData.geometry.location.lat();	// latitude -> place service
+			var lon = placeData.geometry.location.lng();	// longitude -> place service
+
+			// https://developers.google.com/maps/documentation/javascript/geocoding
+			var name = placeData.formatted_address;
+			var bounds = window.mapBounds;					// current boundaries of the map
+
 			var marker = new google.maps.Marker({
 				map: map,
-				position: place.geometry.location,
+				position: placeData.geometry.location,
 				// not sure yet
 				title: name
 			});
@@ -49,20 +57,21 @@
 
 		}
 
+		function callback(results, status){
+			if(status === google.maps.GeocoderStatus.OK){
+				for(var i = 0; i<results.length; i++){
+					setMarker(results[i]);
+				};
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			};
+		}
+
 
 		function geocodeAddress (geocoder, resultsMap){
 			// alert('geocode');
-			geocoder.geocode({'address': address}, function(results, status) {
-				if (status === google.maps.GeocoderStatus.OK) {
-					//resultsMap.setCenter(results[0].geometry.location);
-					var marker = new google.maps.Marker({
-						map: resultsMap,
-						position: results[0].geometry.location
-				});
-				} else {
-					alert('Geocode was not successful for the following reason: ' + status);
-				};
-	        });
+			var geocoder = new google.maps.Geocoder();
+			geocoder.geocode({'address': address}, callback);
 		};
 
 	};
