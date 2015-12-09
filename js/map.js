@@ -9,22 +9,22 @@
 			zoom: 4
 		});
 
+		var locationNames;
 		// var geocoder = new google.maps.Geocoder();
 		//Set zoom increments
 		/*map.addListener('click', function(){
 		map.setZoom(8);
 
 		});*/
-
-		geocodeAddress();
+		//getLocationNames();
+	//};
 
 		function getLocationNames(){
 			var locationNames = [];
-
 			for(var i = 0; i<locations.length ; i++){
 				locationNames.push(locations[i].name + ' ' + locations[i].cityState);
 			}
-
+			console.log( 'getLocationNames' +locationNames);
 			return locationNames;
 		};
 
@@ -67,11 +67,37 @@
 			};
 		}
 
-
-		function geocodeAddress (geocoder, resultsMap){
+		// Single location
+		/*
+		function geocodeAddress (){
 			// alert('geocode');
 			var geocoder = new google.maps.Geocoder();
 			geocoder.geocode({'address': address}, callback);
+
 		};
+		*/
+
+		// Multiple location
+		function geocodeAddress(locationNames){
+			console.log('geocodeAddress' + locationNames);
+			var geocoder = new google.maps.Geocoder();
+			//console.log(locationNames);
+			for(var i = 0; i<locationNames.length; i++){
+				var request = {
+					address: locationNames[i]
+				};
+
+			geocoder.geocode(request, callback);
+
+			};
+			
+
+		};
+
+		// Execute
+		//getLocationNames();
+		locationNames = getLocationNames();
+
+		geocodeAddress(locationNames);
 
 	};

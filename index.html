@@ -12,7 +12,10 @@
 		<header>My Map - Google Map API</header>
 		<nav>
 			<div id="locations">
-				<ul data-bind = "foreach: locations">
+				<form>
+					<input id="filter" name="filter" data-bind="value: filter, valueUpdate: 'keyup' " autocomplete="off">
+				</form>
+				<ul  data-bind = "foreach: computedLocations">
 					<li data-bind = "text : name">Location - 1 </li>
 				</ul>
 			</div>
