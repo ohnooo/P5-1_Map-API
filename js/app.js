@@ -35,20 +35,24 @@ var locations = [
 
 var ViewModel = function(){
 	var self = this;
+	var filterName = "";
 
 	self.name = ko.observableArray(locations);
 	self.filter = ko.observable('');
 
 	self.computedLocations = ko.computed(function(){
 
-		var filterName = ko.utils.arrayFilter(self.name(), function(item){
+		filterName = ko.utils.arrayFilter(self.name(), function(item){
 			return item.name.toLowerCase().indexOf( self.filter().toLowerCase() ) >= 0;
 		});
 		//toLowerCase()
-
+		console.log(filterName);
+		getLocationNames(filterName);
 		return filterName;
 
 	});
+
+
 	//console.log(locations[0].name);
 }
 
