@@ -1,5 +1,5 @@
 //*************** Map ***************//
-//
+// https://github.com/mangalambigai/neighborhood-map/blob/master/js/map.js
 
 	var map;
 	var address = "Space Needle Seattle, wa";
