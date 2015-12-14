@@ -56,7 +56,14 @@
 			infowindow.open(map, maker);
 		});
 
-	}
+	};
+
+	/**
+	* called by geocodeAddress
+	* @param {array} result = array of location services
+	* @param {boolean} status = whether search result
+	*
+	*/
 
 	function callback(results, status){
 		if(status === google.maps.GeocoderStatus.OK){
@@ -66,35 +73,12 @@
 		} else {
 			alert("Geocode was not successful for the following reason: " + status);
 		};
-	}
-
-	// Single location
-	/*
-	function geocodeAddress (){
-		// alert('geocode');
-		var geocoder = new google.maps.Geocoder();
-		geocoder.geocode({'address': address}, callback);
-
 	};
-	*/
-
-
-	function getLocationNames(filterLocationName){
-		//alert('getLocationNames executed');
-		var locationNames = [];
-		for(var i = 0; i<filterLocationName.length ; i++){
-			//console.log('Filiter Name Index: ' + i);
-			locationNames.push(filterLocationName[i].name);
-		}
-		console.log( 'getLocationNames' +locationNames);
-		return locationNames;
-	};
-
 
 	/**
 	* called by ViewModel for each new location
 	* @param {String} name = this is place's name
-	* GeoCode api
+	* GeoCode api services
 	*/
 	function geocodeAddress(locationNames){
 		console.log('geocodeAddress' + locationNames);
@@ -102,7 +86,7 @@
 		//console.log(locationNames);
 		for(var i = 0; i<locationNames.length; i++){
 			var request = {
-				address: locationNames[i]
+				address: locationNames[i].name
 			};
 
 		geocoder.geocode(request, callback);

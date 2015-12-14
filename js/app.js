@@ -34,26 +34,27 @@ var locations = [
 //**************  ViewModel **************//
 
 var ViewModel = function(){
+	// Use 'self' will always refer to the ViewModel
 	var self = this;
-	var filterName = "";
 
 	self.name = ko.observableArray(locations);
 	self.filter = ko.observable('');
 
+	// ko.computed: the value of 'this' refers to the computed observable...
 	self.computedLocations = ko.computed(function(){
-
-		filterName = ko.utils.arrayFilter(self.name(), function(item){
-			return item.name.toLowerCase().indexOf( self.filter().toLowerCase() ) >= 0;
+		var filterName = ko.utils.arrayFilter(self.name(), function(item){
+			// true or false -> see if matching
+			return item.name.toLowerCase().indexOf(self.filter().toLowerCase()) >= 0;
 		});
-		//toLowerCase()
 		console.log(filterName);
-		getLocationNames(filterName);
-		return filterName;
 
+		geocodeAddress(filterName);
+		return filterName;
 	});
 
-
 	//console.log(locations[0].name);
+	//console.log(self.computedLocations());
+
 }
 
 ko.applyBindings(new ViewModel);
