@@ -14,7 +14,7 @@
 			zoom: 4
 		});
 
-		var locationNames;
+		//var locationNames;
 		// var geocoder = new google.maps.Geocoder();
 		//Set zoom increments
 		/*map.addListener('click', function(){
@@ -81,7 +81,13 @@
 	* GeoCode api services
 	*/
 	function geocodeAddress(locationNames){
-		console.log('geocodeAddress' + locationNames);
+		console.log(locationNames);
+			// returns Array obj
+			// {'name' 		: 'Space Needle',
+			// 'address' 	: '400 Broad St,',
+			// 'cityState'	: 'Seattle, WA'}
+			//
+
 		var geocoder = new google.maps.Geocoder();
 		//console.log(locationNames);
 		for(var i = 0; i<locationNames.length; i++){

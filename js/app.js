@@ -48,7 +48,10 @@ var ViewModel = function(){
 		});
 		console.log(filterName);
 
+		// change it will update / recreate marker on the google map
 		geocodeAddress(filterName);
+
+		// Update location list
 		return filterName;
 	});
 
@@ -57,10 +60,19 @@ var ViewModel = function(){
 
 }
 
-ko.applyBindings(new ViewModel);
 
 
+//ko.applyBindings(new ViewModel);
 
+/**
+* Called when google map gets loaded from index.html
+* start google map, ViewModel
+*/
+
+var InitialApp = function(){
+	initMap();
+	ko.applyBindings(new ViewModel);
+};
 
 
 
