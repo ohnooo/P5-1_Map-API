@@ -22,7 +22,10 @@
 
 		});*/
 		//getLocationNames();
-	};
+
+	function test(){
+		alert('this can be called');
+	}
 
 	/**
 	* Reads Google Geocoder result to create map pins
@@ -100,6 +103,9 @@
 		};
 
 	};
+
+}; // End of map.js
+
 
 		// Execute
 		//getLocationNames();

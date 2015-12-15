@@ -33,9 +33,10 @@ var locations = [
 
 //**************  ViewModel **************//
 
-var ViewModel = function(){
+var ViewModel = function(initMap){
 	// Use 'self' will always refer to the ViewModel
 	var self = this;
+	console.log('maps: ' + initMap);
 
 	self.name = ko.observableArray(locations);
 	self.filter = ko.observable('');
@@ -49,7 +50,7 @@ var ViewModel = function(){
 		console.log(filterName);
 
 		// change it will update / recreate marker on the google map
-		geocodeAddress(filterName);
+		initMap.geocodeAddress(filterName);
 
 		// Update location list
 		return filterName;
@@ -70,8 +71,16 @@ var ViewModel = function(){
 */
 
 var InitialApp = function(){
-	initMap();
-	ko.applyBindings(new ViewModel);
+	/*
+	var mapObj = initMap();
+	console.log('InitialApp: ' + mapObj);
+	// -> undefine why?
+
+	console.log('InitialApp: ' + initMap);
+	// -> works
+	*/
+
+	ko.applyBindings(new ViewModel(initMap));
 };
 
 
