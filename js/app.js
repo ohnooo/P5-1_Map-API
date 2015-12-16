@@ -36,7 +36,7 @@ var locations = [
 var ViewModel = function(initMap){
 	// Use 'self' will always refer to the ViewModel
 	var self = this;
-	//console.log('maps: ' + initMap);
+	//console.log(initMap);
 
 	self.name = ko.observableArray(locations);
 	self.filter = ko.observable('');
@@ -49,8 +49,8 @@ var ViewModel = function(initMap){
 		});
 
 		// change it will update / recreate marker on the google map
-		initMap.geocodeAddress(filterName);
-
+		//initMap.geocodeAddress(filterName);
+		//console.log(initMap.testFields);
 		// Update location list
 		return filterName;
 	});
@@ -67,16 +67,8 @@ var ViewModel = function(initMap){
 */
 
 var InitialApp = function(){
-	/*
-	var mapObj = initMap();
-	console.log('InitialApp: ' + mapObj);
-	// -> undefine why?
-
-	console.log('InitialApp: ' + initMap);
-	// -> works
-	*/
-	initMap();
-	ko.applyBindings(new ViewModel(initMap));
+	var mapObj = new initMap();
+	ko.applyBindings(new ViewModel(mapObj));
 };
 
 
@@ -146,5 +138,18 @@ function TestView(){
 TestView.init()  <-- is not a function.  How can i access init within TestView?
 or in order to write note notation I have to write my functions like example 1
 */
+
+// var InitialApp = function(){
+
+// 	var mapObj = initMap();
+// 	console.log('InitialApp: ' + mapObj);
+// 	// -> undefine why?
+
+// 	console.log('InitialApp: ' + initMap);
+// 	// -> works
+
+// 	var mapObj = new initMap();
+// 	ko.applyBindings(new ViewModel(mapObj));
+// };
 
 
