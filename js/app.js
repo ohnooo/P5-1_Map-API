@@ -24,7 +24,7 @@ var locations = [
 		'cityState'	: 'Seattle, WA'
 	},
 	{
-		'name' 		: 'Future of Flight Aviation Center & Boeing Tour',
+		'name' 		: 'Boeing Tour',
 		'address' 	: '8415 Paine Field Blvd,',
 		'cityState'	: 'Mukilteo, WA'
 	}
@@ -33,7 +33,7 @@ var locations = [
 
 //**************  ViewModel **************//
 
-var ViewModel = function(initMap){
+var ViewModel = function(){
 	// Use 'self' will always refer to the ViewModel
 	var self = this;
 	//console.log(initMap);
@@ -49,7 +49,7 @@ var ViewModel = function(initMap){
 		});
 
 		// change it will update / recreate marker on the google map
-		//initMap.geocodeAddress(filterName);
+		geocodeAddress(filterName);
 		//console.log(initMap.testFields);
 		// Update location list
 		return filterName;
@@ -67,8 +67,8 @@ var ViewModel = function(initMap){
 */
 
 var InitialApp = function(){
-	var mapObj = new initMap();
-	ko.applyBindings(new ViewModel(mapObj));
+	initMap();
+
 };
 
 

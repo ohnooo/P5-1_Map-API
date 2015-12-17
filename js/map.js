@@ -1,5 +1,5 @@
 //*************** Map ***************//
-// https://github.com/mangalambigai/neighborhood-map/blob/master/js/map.js
+
 
 	var map;
 	var address = "Space Needle Seattle, wa";
@@ -8,21 +8,18 @@
 	* called after google map is loaded
 	* create the map
 	*/
-function initMap() {
+	function initMap() {
+		map = new google.maps.Map(document.getElementById('map'), {
+			center: {lat: 47.6149938, lng: -122.4763307},
+			zoom: 10
+		});
 
-	map = new google.maps.Map(document.getElementById('map'), {
-		center: {lat: 39.0971086, lng: -102.1868685},
-		zoom: 4
-	});
+		// Sets the boundaries of the map based on pin locations
+  		window.mapBounds = new google.maps.LatLngBounds();
 
-		//var locationNames;
-		// var geocoder = new google.maps.Geocoder();
-		//Set zoom increments
-		/*map.addListener('click', function(){
-		map.setZoom(8);
-
-		});*/
-		//getLocationNames();
+		// Start ViewModel to make sure it initialize after Google map loads
+		ko.applyBindings(new ViewModel());
+	};
 
 	/**
 	* Reads Google Geocoder result to create map pins
@@ -101,6 +98,6 @@ function initMap() {
 
 	};
 
-}; // End of map.js
+
 
 
