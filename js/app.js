@@ -31,15 +31,21 @@ var locations = [
 ];
 
 
+// Geo Constructor
+// Source : https://discussions.udacity.com/t/having-trouble-accessing-data-outside-an-ajax-request/39072/10
+
+
 //**************  ViewModel **************//
 
-var ViewModel = function(){
+var ViewModel = function(MapApp){
 	// Use 'self' will always refer to the ViewModel
 	var self = this;
 	//console.log(initMap);
 
 	self.name = ko.observableArray(locations);
 	self.filter = ko.observable('');
+
+	MapApp.geocodeAddress(locations);
 
 	// ko.computed: the value of 'this' refers to the computed observable...
 	self.computedLocations = ko.computed(function(){
@@ -49,7 +55,7 @@ var ViewModel = function(){
 		});
 
 		// change it will update / recreate marker on the google map
-		geocodeAddress(filterName);
+		MapApp.geocodeAddress(filterName);
 		//console.log(initMap.testFields);
 		// Update location list
 		return filterName;
@@ -67,8 +73,10 @@ var ViewModel = function(){
 */
 
 var InitialApp = function(){
-	initMap();
-
+	var MapApp = new initMap();
+	//MapApp.testView();
+	// Start ViewModel to make sure it initialize after Google map loads
+	ko.applyBindings(new ViewModel(MapApp));
 };
 
 

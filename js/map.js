@@ -9,6 +9,9 @@
 	* create the map
 	*/
 	function initMap() {
+		// 'self' refers to InitMap
+		var self = this;
+
 		map = new google.maps.Map(document.getElementById('map'), {
 			center: {lat: 47.6149938, lng: -122.4763307},
 			zoom: 10
@@ -17,16 +20,12 @@
 		// Sets the boundaries of the map based on pin locations
   		window.mapBounds = new google.maps.LatLngBounds();
 
-		// Start ViewModel to make sure it initialize after Google map loads
-		ko.applyBindings(new ViewModel());
-	};
-
 	/**
 	* Reads Google Geocoder result to create map pins
 	* @param {string} placeData - object return from geocodeAddress
 	* Single location
 	*/
-	function setMarker(placeData){
+	this.setMarker = function(placeData){
 
 		// Save location data from the search result to local variables
 		var lat = placeData.geometry.location.lat();	// latitude -> place service
@@ -62,10 +61,10 @@
 	*
 	*/
 
-	function callback(results, status){
+	this.callback = function(results, status){
 		if(status === google.maps.GeocoderStatus.OK){
 			for(var i = 0; i<results.length; i++){
-				setMarker(results[i]);
+				self.setMarker(results[i]);
 			};
 		} else {
 			alert("Geocode was not successful for the following reason: " + status);
@@ -77,7 +76,7 @@
 	* @param {String} name = this is place's name
 	* GeoCode api services
 	*/
-	function geocodeAddress(locationNames){
+	this.geocodeAddress = function(locationNames){
 		console.log(locationNames);
 			// returns Array obj
 			// {'name' 		: 'Space Needle',
@@ -92,11 +91,13 @@
 				address: locationNames[i].name
 			};
 
-		geocoder.geocode(request, callback);
+		geocoder.geocode(request, this.callback);
 
 		};
 
 	};
+
+}; // Map
 
 
 
