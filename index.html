@@ -14,9 +14,9 @@
 			<div id="locations">
 
 				<form>
-					<input id="filter" name="filter" data-bind="value: filter, valueUpdate: 'keyup' " autocomplete="off">
+					<input id="filter" name="filter" data-bind="value: userInput, valueUpdate: 'keyup' " autocomplete="off">
 				</form>
-				<ul  data-bind = "foreach: computedLocations">
+				<ul  data-bind = "foreach: visiblePlaces">
 					<li data-bind = "text : name">Location - 1 </li>
 				</ul>
 			</div>

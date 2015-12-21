@@ -25,7 +25,7 @@
 	* @param {string} placeData - object return from geocodeAddress
 	* Single location
 	*/
-	this.setMarker = function(placeData){
+	self.setMarker = function(placeData){
 
 		// Save location data from the search result to local variables
 		var lat = placeData.geometry.location.lat();	// latitude -> place service
@@ -41,6 +41,7 @@
 			// not sure yet
 			title: name
 		});
+		console.log(marker);
 
 		var contentString = 'Wiki API..... or others pull in location information'
 
@@ -61,9 +62,12 @@
 	*
 	*/
 
-	this.callback = function(results, status){
+	self.callback = function(results, status){
 		if(status === google.maps.GeocoderStatus.OK){
 			for(var i = 0; i<results.length; i++){
+				console.log(results[i]);
+
+				// use 'self' refers to Map, 'this' will refer to callback function
 				self.setMarker(results[i]);
 			};
 		} else {
@@ -76,7 +80,7 @@
 	* @param {String} name = this is place's name
 	* GeoCode api services
 	*/
-	this.geocodeAddress = function(locationNames){
+	self.geocodeAddress = function(locationNames){
 		console.log(locationNames);
 			// returns Array obj
 			// {'name' 		: 'Space Needle',
@@ -91,7 +95,7 @@
 				address: locationNames[i].name
 			};
 
-		geocoder.geocode(request, this.callback);
+		geocoder.geocode(request, self.callback);
 
 		};
 

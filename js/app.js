@@ -31,9 +31,18 @@ var locations = [
 ];
 
 
-// Geo Constructor
+// Place Constructor
 // Source : https://discussions.udacity.com/t/having-trouble-accessing-data-outside-an-ajax-request/39072/10
 
+function Place(dataObj){
+	this.name = dataObj.name;
+	this.address = dataObj.address;
+	this.cityState = dataObj.cityState;
+
+	// Save data to Place after you pass location to google service and build marker
+	this.googleServiceData = null;
+	this.marker= null;
+}
 
 //**************  ViewModel **************//
 
@@ -42,16 +51,15 @@ var ViewModel = function(MapApp){
 	var self = this;
 	//console.log(initMap);
 
-	self.name = ko.observableArray(locations);
-	self.filter = ko.observable('');
-
-	MapApp.geocodeAddress(locations);
+	// Get list of location from locations data
+	self.locationName = ko.observableArray(locations);
+	self.userInput = ko.observable('');
 
 	// ko.computed: the value of 'this' refers to the computed observable...
-	self.computedLocations = ko.computed(function(){
-		var filterName = ko.utils.arrayFilter(self.name(), function(item){
+	self.visiblePlaces = ko.computed(function(){
+		var filterName = ko.utils.arrayFilter(self.locationName(), function(item){
 			// true or false -> see if matching
-			return item.name.toLowerCase().indexOf(self.filter().toLowerCase()) >= 0;
+			return item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0;
 		});
 
 		// change it will update / recreate marker on the google map
