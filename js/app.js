@@ -60,12 +60,15 @@ var ViewModel = function(MapApp){
 
 	// Build Marker via the Maps API and place them to the Map
 	self.allPlaces().forEach(function(place){
-		console.log(place);  // place.googleServiceData = null same as line 43
+
+		MapApp.geocodeAddress(place);
 
 
-		place.googleServiceData = MapApp.geocodeAddress(place);
-		console.log(place);   // place.googleServiceData = undefine..?
-		//place.marker = MapApp.;
+		// Return to Place constructor < --- not working
+		// console.log(place);  // place.googleServiceData = null same as line 43
+
+		// place.googleServiceData = MapApp.geocodeAddress(place);
+		// console.log(place);   // place.googleServiceData = undefine..?
 	});
 
 

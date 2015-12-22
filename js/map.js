@@ -26,7 +26,7 @@
 	* Single location
 	*/
 	self.setMarker = function(placeData){
-
+		console.log(placeData);
 		// Save location data from the search result to local variables
 		var lat = placeData.geometry.location.lat();	// latitude -> place service
 		var lon = placeData.geometry.location.lng();	// longitude -> place service
@@ -92,8 +92,14 @@
 
 		geocoder.geocode(request, function(results, status){
 			if(status === google.maps.GeocoderStatus.OK){
-				console.log(results);
-				return results;
+
+				//console.log(results);
+				self.setMarker(results);
+
+
+				// Return to Place constructor < -- because of async not working
+				// console.log(results);
+				// return results;
 
 			} else {
 				alert("Geocode was not successful for the following reason: " + status);
