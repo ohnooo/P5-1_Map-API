@@ -62,18 +62,17 @@
 	*
 	*/
 
-	self.callback = function(results, status){
-		if(status === google.maps.GeocoderStatus.OK){
-			for(var i = 0; i<results.length; i++){
-				console.log(results[i]);
 
-				// use 'self' refers to Map, 'this' will refer to callback function
-				self.setMarker(results[i]);
-			};
-		} else {
-			alert("Geocode was not successful for the following reason: " + status);
-		};
-	};
+	// self.callback = function(results, status){
+
+	// 	if(status === google.maps.GeocoderStatus.OK){
+	// 			// use 'self' refers to Map, 'this' will refer to callback function
+	// 			console.log(results);
+	// 			 results;
+	// 	} else {
+	// 		alert("Geocode was not successful for the following reason: " + status);
+	// 	};
+	// };
 
 	/**
 	* called by ViewModel for each new location
@@ -81,23 +80,31 @@
 	* GeoCode api services
 	*/
 	self.geocodeAddress = function(locationNames){
-		console.log(locationNames);
-			// returns Array obj
-			// {'name' 		: 'Space Needle',
-			// 'address' 	: '400 Broad St,',
-			// 'cityState'	: 'Seattle, WA'}
-			//
+		var googleServiceData = null;
+		//console.log(locationNames);
+			//Place {name: "Space Needle", address: "400 Broad St,", cityState: "Seattle, WA", googleServiceData: null, marker: null}
 
 		var geocoder = new google.maps.Geocoder();
 		//console.log(locationNames);
-		for(var i = 0; i<locationNames.length; i++){
-			var request = {
-				address: locationNames[i].name
+		var request = {
+				address: locationNames.name
 			};
 
-		geocoder.geocode(request, self.callback);
+		googleServiceData = geocoder.geocode(request, function(results, status){
+			if(status === google.maps.GeocoderStatus.OK){
+			// use 'self' refers to Map, 'this' will refer to callback function
+				console.log(results);
+				return results;
 
-		};
+			} else {
+				alert("Geocode was not successful for the following reason: " + status);
+			};
+			//console.log(results);
+		});
+
+		console.log(googleServiceData);
+
+		//return googleServiceData;
 
 	};
 

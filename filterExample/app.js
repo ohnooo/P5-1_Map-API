@@ -72,11 +72,14 @@ var KoViewModel = function() {
   self.filterMarkers = function() {
     var searchInput = self.userInput().toLowerCase();
 
+    // Removes all places than added later on
     self.visiblePlaces.removeAll();
 
     // This looks at the name of each places and then determines if the user
     // input can be found within the place name.
     self.allPlaces.forEach(function(place) {
+      //console.log(place);
+
       place.marker.setVisible(false);
 
       if (place.locationName.toLowerCase().indexOf(searchInput) !== -1) {

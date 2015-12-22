@@ -51,6 +51,22 @@ var ViewModel = function(MapApp){
 	var self = this;
 	//console.log(initMap);
 
+	// Build Place object out of the 'location' raw data
+	self.allPlaces = [];
+	locations.forEach(function(place){
+		self.allPlaces.push(new Place(place));
+	});
+
+	// Build Marker via the Maps API and place them to the Map
+	self.allPlaces.forEach(function(place){
+		place.googleServiceData = MapApp.geocodeAddress(place);
+		//console.log(place);
+		//place.marker = MapApp.;
+	})
+
+
+
+
 	// Get list of location from locations data
 	self.locationName = ko.observableArray(locations);
 	self.userInput = ko.observable('');
@@ -63,7 +79,7 @@ var ViewModel = function(MapApp){
 		});
 
 		// change it will update / recreate marker on the google map
-		MapApp.geocodeAddress(filterName);
+		//MapApp.geocodeAddress(filterName);
 		//console.log(initMap.testFields);
 		// Update location list
 		return filterName;
