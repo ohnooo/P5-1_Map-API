@@ -79,19 +79,20 @@
 	* @param {String} name = this is place's name
 	* GeoCode api services
 	*/
-	self.geocodeAddress = function(place){
-		var googleServiceData;
-		//console.log(place);
+	self.geocodeAddress = function(locationNames){
+		var googleServiceData = null;
+		//console.log(locationNames);
 			//Place {name: "Space Needle", address: "400 Broad St,", cityState: "Seattle, WA", googleServiceData: null, marker: null}
 
 		var geocoder = new google.maps.Geocoder();
 		//console.log(locationNames);
 		var request = {
-				address: place.name
+				address: locationNames.name
 			};
 
-		geocoder.geocode(request, function(results, status){
+		googleServiceData = geocoder.geocode(request, function(results, status){
 			if(status === google.maps.GeocoderStatus.OK){
+			// use 'self' refers to Map, 'this' will refer to callback function
 				console.log(results);
 				return results;
 
@@ -101,7 +102,7 @@
 			//console.log(results);
 		});
 
-		//console.log(googleServiceData);
+		console.log(googleServiceData);
 
 		//return googleServiceData;
 

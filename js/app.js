@@ -52,21 +52,19 @@ var ViewModel = function(MapApp){
 	//console.log(initMap);
 
 	// Build Place object out of the 'location' raw data
-	self.allPlaces = ko.observableArray();
+	self.allPlaces = [];
 	locations.forEach(function(place){
 		self.allPlaces.push(new Place(place));
 	});
-	//console.log(self.allPlaces());
 
 	// Build Marker via the Maps API and place them to the Map
-	self.allPlaces().forEach(function(place){
-		console.log(place);  // place.googleServiceData = null same as line 43
-
-
+	self.allPlaces.forEach(function(place){
 		place.googleServiceData = MapApp.geocodeAddress(place);
-		console.log(place);   // place.googleServiceData = undefine..?
+		//console.log(place);
 		//place.marker = MapApp.;
-	});
+	})
+
+
 
 
 	// Get list of location from locations data
