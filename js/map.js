@@ -99,9 +99,7 @@
 					googleData = { googleServiceData: results[0] };
 					console.log(googleData);
 					return googleData;
-					//for(var i = 0; i<results.length; i++){
-					//self.setMarker(results[0]);
-					//};
+
 				} else {
 					alert("Geocode was not successful for the following reason: " + status);
 				};
