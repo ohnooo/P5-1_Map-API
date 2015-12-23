@@ -61,7 +61,7 @@ var ViewModel = function(MapApp){
 	// Build Marker via the Maps API and place them to the Map
 	self.allPlaces().forEach(function(place){
 
-		MapApp.geocodeAddress(place);
+		//MapApp.geocodeAddress(place);
 
 
 		// Return to Place constructor < --- not working
@@ -72,6 +72,7 @@ var ViewModel = function(MapApp){
 		//place.marker = MapApp.;
 	});
 
+	MapApp.geocodeAddress(locations);
 
 	// Get list of location from locations data
 	self.locationName = ko.observableArray(locations);
