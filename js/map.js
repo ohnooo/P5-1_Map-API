@@ -61,16 +61,16 @@
 		*
 		*/
 
-		self.callback = function(results, status){
-			if(status === google.maps.GeocoderStatus.OK){
-				console.log(results);
-				//for(var i = 0; i<results.length; i++){
-					self.setMarker(results[0]);
-				//};
-			} else {
-				alert("Geocode was not successful for the following reason: " + status);
-			};
-		};
+		// self.callback = function(results, status){
+		// 	if(status === google.maps.GeocoderStatus.OK){
+		// 		console.log(results);
+		// 		//for(var i = 0; i<results.length; i++){
+		// 			self.setMarker(results[0]);
+		// 		//};
+		// 	} else {
+		// 		alert("Geocode was not successful for the following reason: " + status);
+		// 	};
+		// };
 
 		/**
 		* called by ViewModel for each new location
@@ -92,7 +92,16 @@
 					address: locationNames[i].name
 				};
 
-			geocoder.geocode(request, self.callback);
+				geocoder.geocode(request, function(results, status){
+					if(status === google.maps.GeocoderStatus.OK){
+						console.log(results);
+						//for(var i = 0; i<results.length; i++){
+						self.setMarker(results[0]);
+						//};
+					} else {
+						alert("Geocode was not successful for the following reason: " + status);
+					};
+				});
 
 			};
 
