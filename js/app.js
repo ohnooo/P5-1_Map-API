@@ -61,18 +61,13 @@ var ViewModel = function(MapApp){
 	// Build Marker via the Maps API and place them to the Map
 	self.allPlaces().forEach(function(place){
 
-		//MapApp.geocodeAddress(place);
+		place.googleServiceData = MapApp.geocodeAddress(place);
+		console.log(place);   // place.googleServiceData = undefine..?
 
-
-		// Return to Place constructor < --- not working
-		// console.log(place);  // place.googleServiceData = null same as line 43
-
-		// place.googleServiceData = MapApp.geocodeAddress(place);
-		// console.log(place);   // place.googleServiceData = undefine..?
-		//place.marker = MapApp.;
 	});
 
-	MapApp.geocodeAddress(locations);
+
+	//MapApp.geocodeAddress(locations);
 
 	// Get list of location from locations data
 	self.locationName = ko.observableArray(locations);

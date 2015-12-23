@@ -78,32 +78,34 @@
 		* GeoCode api services
 		*/
 		self.geocodeAddress = function(locationNames){
-			//console.log(locationNames);
-				// returns Array obj
-				// {'name' 		: 'Space Needle',
-				// 'address' 	: '400 Broad St,',
-				// 'cityState'	: 'Seattle, WA'}
-				//
+			var googleData;
+			//console.log(locationNames.name);
+
+			//console.log(locationNames.length); // undefine
 
 			var geocoder = new google.maps.Geocoder();
 			//console.log(locationNames);
-			for(var i = 0; i<locationNames.length; i++){
-				var request = {
-					address: locationNames[i].name
-				};
-
-				geocoder.geocode(request, function(results, status){
-					if(status === google.maps.GeocoderStatus.OK){
-						console.log(results);
-						//for(var i = 0; i<results.length; i++){
-						self.setMarker(results[0]);
-						//};
-					} else {
-						alert("Geocode was not successful for the following reason: " + status);
-					};
-				});
-
+			var request = {
+				address: locationNames.name
 			};
+			console.log(request);
+			/*****	 Temperary block until 	****/
+			geocoder.geocode(request, function(results, status){
+				if(status === google.maps.GeocoderStatus.OK){
+					//console.log(results[0]);
+					self.setMarker(results[0]);
+
+					// Return google data to the place obj
+					googleData = { googleServiceData: results[0] };
+					console.log(googleData);
+					return googleData;
+					//for(var i = 0; i<results.length; i++){
+					//self.setMarker(results[0]);
+					//};
+				} else {
+					alert("Geocode was not successful for the following reason: " + status);
+				};
+			});
 
 		};
 
