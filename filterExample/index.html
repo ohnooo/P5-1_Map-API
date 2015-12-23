@@ -3,17 +3,17 @@
   <head>
     <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAQaZ6OnFjiJIwUno3a39J7tf_7Ip9inuQ"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/knockout/3.3.0/knockout-min.js"></script>
-      <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
   </head>
 
   <body>
     <div id="map"></div>
     <input type="search" placeholder="keyword search..." data-bind="textInput: userInput, event: {keyup: filterMarkers}">
-
+    
     <ul id="list-view" data-bind="foreach: visiblePlaces">
       <li data-bind="text: locationName"></li>
     </ul>
-    <script src="app.js"></script>
+  <script src="app.js"></script>
   </body>
 
 </html>

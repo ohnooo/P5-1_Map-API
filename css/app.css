@@ -14,12 +14,14 @@ header{
 }
 
 nav{
+	padding-top:50px;
 	width:100%;
 	position:absolute;
 	z-index: 20;
 }
 
 #locations{
+
 	margin-right: 20px;
 	position:relative;
 	float:right;

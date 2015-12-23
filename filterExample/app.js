@@ -30,7 +30,6 @@ var KoViewModel = function() {
   // limited by the original data.
   self.allPlaces = [];
   locationData.forEach(function(place) {
-    //console.log(place);
     self.allPlaces.push(new Place(place));
   });
 
@@ -46,9 +45,8 @@ var KoViewModel = function() {
     // You might also add listeners onto the marker, such as "click" listeners.
   });
 
-
   // This array will contain what its name implies: only the markers that should
-  // be visible based on user input. My solution does not need to use an
+  // be visible based on user input. My solution does not need to use an 
   // observableArray for this purpose, but other solutions may require that.
   self.visiblePlaces = ko.observableArray();
 
@@ -58,16 +56,14 @@ var KoViewModel = function() {
     self.visiblePlaces.push(place);
   });
 
-
-  // This, along with the data-bind on the <input> element, lets KO keep
-  // constant awareness of what the user has entered. It stores the user's
+  // This, along with the data-bind on the <input> element, lets KO keep 
+  // constant awareness of what the user has entered. It stores the user's 
   // input at all times.
   self.userInput = ko.observable('');
 
-
   // The filter will look at the names of the places the Markers are standing
   // for, and look at the user input in the search box. If the user input string
-  // can be found in the place name, then the place is allowed to remain
+  // can be found in the place name, then the place is allowed to remain 
   // visible. All other markers are removed.
   self.filterMarkers = function() {
     var searchInput = self.userInput().toLowerCase();
@@ -84,12 +80,10 @@ var KoViewModel = function() {
       }
     });
 
-
     self.visiblePlaces().forEach(function(place) {
       place.marker.setVisible(true);
     });
   };
-
 
   function Place(dataObj) {
     this.locationName = dataObj.locationName;
