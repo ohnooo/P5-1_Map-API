@@ -77,28 +77,26 @@
 		* @param {String} name = this is place's name
 		* GeoCode api services
 		*/
-		self.geocodeAddress = function(locationNames){
+		self.geocodeAddress = function(locationNames, callback){
 			var googleData;
-			//console.log(locationNames.name);
-
-			//console.log(locationNames.length); // undefine
 
 			var geocoder = new google.maps.Geocoder();
 			//console.log(locationNames);
 			var request = {
 				address: locationNames.name
 			};
-			console.log(request);
+			//console.log(request);
 			/*****	 Temperary block until 	****/
 			geocoder.geocode(request, function(results, status){
 				if(status === google.maps.GeocoderStatus.OK){
 					//console.log(results[0]);
-					self.setMarker(results[0]);
+					//self.setMarker(results[0]);
 
-					// Return google data to the place obj
-					googleData = { googleServiceData: results[0] };
-					console.log(googleData);
-					return googleData;
+					// Check if callback is a function
+					// Resournce http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
+					if(typeof callback === "function"){
+						callback(results[0]);
+					}
 
 				} else {
 					alert("Geocode was not successful for the following reason: " + status);

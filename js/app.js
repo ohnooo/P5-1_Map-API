@@ -61,10 +61,27 @@ var ViewModel = function(MapApp){
 	// Build Marker via the Maps API and place them to the Map
 	self.allPlaces().forEach(function(place){
 
-		place.googleServiceData = MapApp.geocodeAddress(place);
-		console.log(place);   // place.googleServiceData = undefine..?
+		//place.googleServiceData = MapApp.geocodeAddress(place);
+
+		MapApp.geocodeAddress(place, function(googleData){
+			place.googleServiceData = googleData; //return data
+		});
+
+		// MapApp.geocodeAddress(function(place){
+		// 	place.googleServiceData =
+		// });
+
+		  // place.googleServiceData = undefine..?
 
 	});
+
+	// Check Data
+	self.checkPlaceObject = function(){
+		self.allPlaces().forEach(function(place){
+			console.log(place);
+		})
+	};
+
 
 
 	//MapApp.geocodeAddress(locations);
@@ -98,11 +115,17 @@ var ViewModel = function(MapApp){
 * start google map, ViewModel
 */
 
+var vm;
+
 var InitialApp = function(){
 	var MapApp = new initMap();
 	//MapApp.testView();
 	// Start ViewModel to make sure it initialize after Google map loads
-	ko.applyBindings(new ViewModel(MapApp));
+	//ko.applyBindings(new ViewModel(MapApp));
+
+	vm = new ViewModel(MapApp);
+
+	ko.applyBindings(vm);
 };
 
 
