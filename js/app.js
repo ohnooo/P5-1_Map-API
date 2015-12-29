@@ -58,33 +58,27 @@ var ViewModel = function(MapApp){
 	});
 	//console.log(self.allPlaces());
 
+
 	// Build Marker via the Maps API and place them to the Map
+
 	self.allPlaces().forEach(function(place){
 
-		//place.googleServiceData = MapApp.geocodeAddress(place);
+		var setGoogleData = function(data){
+				place.googleServiceData = data;
 
-		MapApp.geocodeAddress(place, function(googleData){
-			place.googleServiceData = googleData; //return data
-		});
+				MapApp.setMarker(place.googleServiceData, setMarkerData);
+			};
 
-		// MapApp.geocodeAddress(function(place){
-		// 	place.googleServiceData =
-		// });
+		var setMarkerData = function(data){
+				place.marker = data;
+			};
 
-		  // place.googleServiceData = undefine..?
+		MapApp.geocodeAddress(place, setGoogleData);
 
 	});
 
-	// Check Data
-	self.checkPlaceObject = function(){
-		self.allPlaces().forEach(function(place){
-			console.log(place);
-		})
-	};
 
-
-
-	//MapApp.geocodeAddress(locations);
+	// Filter
 
 	// Get list of location from locations data
 	self.locationName = ko.observableArray(locations);
@@ -103,6 +97,15 @@ var ViewModel = function(MapApp){
 		// Update location list
 		return filterName;
 	});
+
+
+	// Check Data
+	self.checkPlaceObject = function(){
+		self.allPlaces().forEach(function(place){
+			console.log(place);
+		})
+	};
+
 
 };
 

@@ -25,7 +25,7 @@
 		* @param {string} placeData - object return from geocodeAddress
 		* Single location
 		*/
-		self.setMarker = function(placeData){
+		self.setMarker = function(placeData, setMarkerData){
 
 			// Save location data from the search result to local variables
 			var lat = placeData.geometry.location.lat();	// latitude -> place service
@@ -52,32 +52,21 @@
 				infowindow.open(map, maker);
 			});
 
+			// Check if call back is function
+			// CallBack function to set information to place
+			if(typeof setMarkerData === "function"){
+				setMarkerData(marker);
+			}
+			console.log(marker);
+
 		};
-
-		/**
-		* called by geocodeAddress
-		* @param {array} result = array of location services
-		* @param {boolean} status = whether search result
-		*
-		*/
-
-		// self.callback = function(results, status){
-		// 	if(status === google.maps.GeocoderStatus.OK){
-		// 		console.log(results);
-		// 		//for(var i = 0; i<results.length; i++){
-		// 			self.setMarker(results[0]);
-		// 		//};
-		// 	} else {
-		// 		alert("Geocode was not successful for the following reason: " + status);
-		// 	};
-		// };
 
 		/**
 		* called by ViewModel for each new location
 		* @param {String} name = this is place's name
 		* GeoCode api services
 		*/
-		self.geocodeAddress = function(locationNames, callback){
+		self.geocodeAddress = function(locationNames, setGoogleData){
 			var googleData;
 
 			var geocoder = new google.maps.Geocoder();
@@ -94,8 +83,8 @@
 
 					// Check if callback is a function
 					// Resournce http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
-					if(typeof callback === "function"){
-						callback(results[0]);
+					if(typeof setGoogleData === "function"){
+						setGoogleData(results[0]);
 					}
 
 				} else {
