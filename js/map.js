@@ -57,7 +57,6 @@
 			if(typeof setMarkerData === "function"){
 				setMarkerData(marker);
 			}
-			console.log(marker);
 
 		};
 

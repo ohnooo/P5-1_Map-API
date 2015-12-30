@@ -81,13 +81,24 @@ var ViewModel = function(MapApp){
 	// Filter
 
 	// Get list of location from locations data
-	self.locationName = ko.observableArray(locations);
 	self.userInput = ko.observable('');
 
 	// ko.computed: the value of 'this' refers to the computed observable...
 	self.visiblePlaces = ko.computed(function(){
-		var filterName = ko.utils.arrayFilter(self.locationName(), function(item){
+		var filterName = ko.utils.arrayFilter(self.allPlaces(), function(item){
 			// true or false -> see if matching
+
+			console.log(item);
+
+			console.log(item.name.toLowerCase().indexOf(self.userInput().toLowerCase()));
+			//--> return position that matches userInput
+
+			console.log(item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0);
+			//--> return true or fals
+			// if true the place will be displayed
+
+			// This should also be the area that sets place.marker.visible(false)....
+
 			return item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0;
 		});
 
