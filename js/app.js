@@ -93,13 +93,19 @@ var ViewModel = function(MapApp){
 			console.log(item.name.toLowerCase().indexOf(self.userInput().toLowerCase()));
 			//--> return position that matches userInput
 
-			console.log(item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0);
+			var visibleLocation = item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0;
 			//--> return true or fals
 			// if true the place will be displayed
-
+			if(item.marker != null){
+				if(visibleLocation){
+					item.marker.setVisible(true);
+				}else{
+					item.marker.setVisible(false);
+				}
+			};
 			// This should also be the area that sets place.marker.visible(false)....
 
-			return item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0;
+			return visibleLocation;
 		});
 
 		// change it will update / recreate marker on the google map
