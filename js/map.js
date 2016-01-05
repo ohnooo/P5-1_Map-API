@@ -20,6 +20,12 @@
 		// Sets the boundaries of the map based on pin locations
   		window.mapBounds = new google.maps.LatLngBounds();
 
+  		// Create infowindow obj to pass
+		var infowindow = new google.maps.InfoWindow({
+			content: '',
+			maxWidth: 200
+		});
+
 		/**
 		* Reads Google Geocoder result to create map pins
 		* @param {string} placeData - object return from geocodeAddress
@@ -44,12 +50,6 @@
 				position: placeData.geometry.location,
 				// not sure yet
 				title: name
-			});
-
-			// Create infowindow obj to pass
-			var infowindow = new google.maps.InfoWindow({
-				content: '',
-				maxWidth: 200
 			});
 
 			google.maps.event.addListener(marker, 'click', function(){
