@@ -66,7 +66,7 @@ var ViewModel = function(MapApp){
 		var setGoogleData = function(data){
 				place.googleServiceData = data;
 
-				MapApp.setMarker(place.googleServiceData, setMarkerData);
+				MapApp.setMarker(place.googleServiceData , setMarkerData);
 			};
 
 		var setMarkerData = function(data){
@@ -88,14 +88,15 @@ var ViewModel = function(MapApp){
 		var filterName = ko.utils.arrayFilter(self.allPlaces(), function(item){
 			// true or false -> see if matching
 
-			console.log(item);
+			//console.log(item);
 
 			console.log(item.name.toLowerCase().indexOf(self.userInput().toLowerCase()));
 			//--> return position that matches userInput
 
 			var visibleLocation = item.name.toLowerCase().indexOf(self.userInput().toLowerCase()) >= 0;
 			//--> return true or fals
-			// if true the place will be displayed
+
+			// if true the place marker will be displayed
 			if(item.marker != null){
 				if(visibleLocation){
 					item.marker.setVisible(true);
@@ -103,7 +104,6 @@ var ViewModel = function(MapApp){
 					item.marker.setVisible(false);
 				}
 			};
-			// This should also be the area that sets place.marker.visible(false)....
 
 			return visibleLocation;
 		});

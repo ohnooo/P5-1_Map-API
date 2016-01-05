@@ -27,13 +27,17 @@
 		*/
 		self.setMarker = function(placeData, setMarkerData){
 
+			console.log(placeData);
+
 			// Save location data from the search result to local variables
 			var lat = placeData.geometry.location.lat();	// latitude -> place service
 			var lon = placeData.geometry.location.lng();	// longitude -> place service
-
+			var address = placeData.formatted_address;
+			var name = address.split(',')[0];;
 			// https://developers.google.com/maps/documentation/javascript/geocoding
-			var name = placeData.formatted_address;
+
 			var bounds = window.mapBounds;					// current boundaries of the map
+			console.log(name);
 
 			var marker = new google.maps.Marker({
 				map: map,
@@ -42,14 +46,14 @@
 				title: name
 			});
 
-			var contentString = 'Wiki API..... or others pull in location information'
-
+			// Create infowindow obj to pass
 			var infowindow = new google.maps.InfoWindow({
-				content: contentString
+				content: '',
+				maxWidth: 200
 			});
 
-			marker.addListener('click', function(){
-				infowindow.open(map, maker);
+			google.maps.event.addListener(marker, 'click', function(){
+				setInfoWindow(marker, name, address, infowindow);
 			});
 
 			// Check if call back is function
