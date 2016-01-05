@@ -108,9 +108,6 @@ var ViewModel = function(MapApp){
 			return visibleLocation;
 		});
 
-		// change it will update / recreate marker on the google map
-		//MapApp.geocodeAddress(filterName);
-		//console.log(initMap.testFields);
 		// Update location list
 		return filterName;
 	});

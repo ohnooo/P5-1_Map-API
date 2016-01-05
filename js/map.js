@@ -74,11 +74,9 @@
 				address: locationNames.name
 			};
 			//console.log(request);
-			/*****	 Temperary block until 	****/
 			geocoder.geocode(request, function(results, status){
 				if(status === google.maps.GeocoderStatus.OK){
 					//console.log(results[0]);
-					//self.setMarker(results[0]);
 
 					// Check if callback is a function
 					// Resournce http://javascriptissexy.com/understand-javascript-callback-functions-and-use-them/
