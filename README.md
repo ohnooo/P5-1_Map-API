@@ -1,8 +1,8 @@
 # neighborhood
 
-### Neighborhood Map Project #5 For Udacity FEND
+### Neighborhood Map Project #5 For Udacity
 
-This is an interactive map of Coffee places in Newport, Oregon.
+This is an interactive map of Washionton Seattle.
 
 #### Installation
 
