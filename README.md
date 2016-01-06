@@ -6,9 +6,9 @@ This is an interactive map of Coffee places in Newport, Oregon.
 
 #### Installation
 
-Either clone the repository using GIT, or use the download ZIP link on the right hand side of the screen. Open the /dist directory and double click the index.html file. You need to have a working internet connection for the app to work because it draws information from Google Maps and Foursquare.
+Either clone the repository using GIT, or use the download ZIP link on the right hand side of the screen. Double click the index.html file. You need to have a working internet connection for the app to work because it draws information from Google Maps and New York Times.
 
-Alternatively, you can simply view the project here: http://lacyjpr.github.io/neighborhood/
+Alternatively, you can simply view the project here: http://ohnooo.github.io/P5-1_Map-API/
 
 #### Credits & Resources
 http://knockoutjs.com/documentation/observableArrays.html
