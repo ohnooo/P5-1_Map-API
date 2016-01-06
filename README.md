@@ -26,6 +26,7 @@ https://discussions.udacity.com/t/filtering-knockout-utils/42602
 https://discussions.udacity.com/t/having-trouble-accessing-data-outside-an-ajax-request/39072
 https://discussions.udacity.com/t/map-final-having-problems-passing-map-data-to-my-place-object/41954/14
 https://discussions.udacity.com/t/how-to-check-data-in-the-viewmodel-from-chrome-console/42521/3
+https://discussions.udacity.com/t/how-to-check-data-in-the-viewmodel-from-chrome-console/42521/5
 
 ### Stackoverflow
 http://stackoverflow.com/questions/4971961/javascript-truncate-string-after-comma
