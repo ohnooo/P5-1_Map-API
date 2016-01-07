@@ -32,7 +32,6 @@ nav{
 	float:right;
 }
 
-
 @media only screen and (max-width: 550px){
 
 	#hamburger {
@@ -47,6 +46,10 @@ nav{
 	    display: block;
 	    width: 40px;
 	    fill: #fff;
+    }
+
+    .navDisplayNon{
+    	display:none;
     }
 }
 

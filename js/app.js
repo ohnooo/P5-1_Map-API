@@ -112,9 +112,29 @@ var ViewModel = function(MapApp){
 		return filterName;
 	});
 
+	// click on nav show associated marker
 	self.showInfo = function(place){
-		console.log(place);
+		//console.log(place);
 		google.maps.event.trigger(place.marker, 'click');
+		self.hideNav();
+	}
+
+	// Navigation for mobile
+	self.isDrawerOpen = ko.observable(false);
+	self.navVisible = ko.pureComputed(function(){
+		// when statment is TRUE use 'nav' : when statment False use 'navDisplayNon'
+		return self.isDrawerOpen() === false ? 'nav' : 'navDisplayNon';
+	}, this);
+
+	self.hideNav = function (toggleNav){
+		console.log(toggleNav);
+		self.isDrawerOpen(true);
+		//return true;
+	};
+
+	self.showNav = function (toggleNav){
+		self.isDrawerOpen(false);
+		//return true;
 	}
 
 	// Check Data
