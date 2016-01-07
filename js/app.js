@@ -161,13 +161,18 @@ var InitialApp = function(){
 
 
 
-/*==========================================*/
+/*====================  Personal reference  ======================*/
 
 // Questions for Jaili
 // Ways to write functions
 /*
 
 Example 1:
+/*=========  Reviewer's answers =========
+ *  This is an object, holding three "keys": init, doSomething, and doSomethingElse, 
+ *  all of which are function.
+====
+
 
 var TestView = {
 
@@ -200,6 +205,14 @@ function TestView(){
 		return locations[0].name;
 	};
 
+	/*=========  Reviewer's answers =========
+		If you'd like TestView.init() to work, you could do:
+			this.init = function () {
+			    ...
+		}
+	====
+
+
 	function doSomething(){
 		return locations[1].name;
 	};
@@ -219,11 +232,18 @@ or in order to write note notation I have to write my functions like example 1
 // 	console.log('InitialApp: ' + mapObj);
 // 	// -> undefine why?
 
+/*=========  Reviewer's answers =========
+
+	mapObj = initMap(). initMap is a function. the () executes the function,
+	so if initMap does not return anything (for example,
+	if it just mutates an array or something),
+	then the return value is simply undefined.
+
+====*/
+
 // 	console.log('InitialApp: ' + initMap);
 // 	// -> works
 
 // 	var mapObj = new initMap();
 // 	ko.applyBindings(new ViewModel(mapObj));
 // };
-
-
