@@ -4,7 +4,8 @@
 		<meta charset="utf-8">
 		<title>Maps API</title>
 		<link rel="stylesheet" href="css/app.css">
-		<meta name="viewport" content="width=device-width">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
 		<style type="text/css">
 	      html, body { height: 100%; margin: 0; padding: 0; }
 	    </style>
@@ -17,16 +18,13 @@
 					<input id="filter" name="filter" data-bind="textInput:  userInput, valueUpdate: 'keyup' " autocomplete="off" placeholder="Filter / Search">
 				</form>
 				<ul  data-bind = "foreach: visiblePlaces">
-					<li data-bind = "text : name">Location - 1 </li>
+					<li data-bind = "text : name, click: $parent.showInfo"></li>
 				</ul>
 			</div>
 		</nav>
 		<div id="map"></div>
 
-<<<<<<< HEAD
-=======
 
->>>>>>> gh-pages
 		<script src="js-lib/jquery-1.11.3.min.js"></script>
 		<script src="js-lib/knockout-3.4.0.js"></script>
 		<script src="js/infowindow.js"></script>

@@ -44,7 +44,7 @@ function setInfoWindow(marker, name, address, infowindow){
 
 
     }).fail(function(){
-    	infoContent = '<div><p>New York Times Articles: Could not be found.';
+    	infoContent = '<div><p>New York Times Articles: Could not be found.</p></div>';
     	infowindow.setContent(infoText);
     	infowindow.open(map, marker);
     });

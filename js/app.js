@@ -112,6 +112,10 @@ var ViewModel = function(MapApp){
 		return filterName;
 	});
 
+	self.showInfo = function(place){
+		console.log(place);
+		google.maps.event.trigger(place.marker, 'click');
+	}
 
 	// Check Data
 	self.checkPlaceObject = function(){
