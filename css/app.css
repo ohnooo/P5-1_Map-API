@@ -13,6 +13,10 @@ header{
 	color:#fff;
 }
 
+svg {
+  display: none;
+}
+
 nav{
 	background-color:#ccc;
 	padding:20px 10px;
@@ -27,6 +31,25 @@ nav{
 	position:relative;
 	float:right;
 }
+
+
+@media only screen and (max-width: 550px){
+
+	#hamburger {
+	    position: fixed;
+	    left: 85%;
+	    right: 0;
+	    top: 0;
+	    width: 40px;
+    }
+
+    svg {
+	    display: block;
+	    width: 40px;
+	    fill: #fff;
+    }
+}
+
 
 /* Location alight left
 header{
