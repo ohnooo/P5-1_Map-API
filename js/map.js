@@ -54,7 +54,8 @@
 				title: name
 			});
 
-			bounds.extend(marker.position);				// current boundaries of the map
+			//extend the bounds to include each marker's position
+			bounds.extend(marker.position);	// current boundaries of the map
 
 			google.maps.event.addListener(marker, 'click', function(){
 				setInfoWindow(marker, name, address, infowindow);
@@ -67,7 +68,7 @@
 			if(typeof setMarkerData === "function"){
 				setMarkerData(marker);
 			}
-
+			//now fit the map to the newly inclusive bounds
 			map.fitBounds(bounds);
 		};
 

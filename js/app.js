@@ -127,8 +127,15 @@ var ViewModel = function(MapApp){
 		return self.isDrawerOpen() === false ? 'nav' : 'navDisplayNon';
 	}, this);
 
+	self.toggleNav = function(toggleNav){
+		if(self.isDrawerOpen === 'true'){
+			self.hideNav();
+		}else{
+			self.showNav();
+		};
+	};
+
 	self.hideNav = function (toggleNav){
-		console.log(toggleNav);
 		self.isDrawerOpen(true);
 		//return true;
 	};
