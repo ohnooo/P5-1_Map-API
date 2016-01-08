@@ -31,6 +31,9 @@ https://discussions.udacity.com/t/how-to-check-data-in-the-viewmodel-from-chrome
 ### Stackoverflow
 http://stackoverflow.com/questions/4971961/javascript-truncate-string-after-comma
 
+### Mobile Hamburger Icon
+http://codepen.io/SittingFox/pen/NGwZvm?editors=101
+
 
 
 
