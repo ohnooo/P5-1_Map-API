@@ -13,13 +13,16 @@
 		var self = this;
 
 		map = new google.maps.Map(document.getElementById('map'), {
-			center: {lat: 47.6149938, lng: -122.4763307},
+			center: {lat: 47.6149938, lng: -122.2915567},
 			zoom: 10
 		});
 
-		// Sets the boundaries of the map based on pin locations
-  		window.mapBounds = new google.maps.LatLngBounds();
+		// Auto center map based on pins
+		// http://stackoverflow.com/questions/15719951/google-maps-api-v3-auto-center-map-with-multiple-markers
 
+		// Create empty LatLngBounds
+  		var bounds = new google.maps.LatLngBounds();
+  		//console.log(window.mapBounds);
   		// Create infowindow obj to pass
 		var infowindow = new google.maps.InfoWindow({
 			content: '',
@@ -42,7 +45,6 @@
 			var name = address.split(',')[0];;
 			// https://developers.google.com/maps/documentation/javascript/geocoding
 
-			var bounds = window.mapBounds;					// current boundaries of the map
 			//console.log(name);
 
 			var marker = new google.maps.Marker({
@@ -51,6 +53,8 @@
 				// not sure yet
 				title: name
 			});
+
+			bounds.extend(marker.position);				// current boundaries of the map
 
 			google.maps.event.addListener(marker, 'click', function(){
 				setInfoWindow(marker, name, address, infowindow);
@@ -64,6 +68,7 @@
 				setMarkerData(marker);
 			}
 
+			map.fitBounds(bounds);
 		};
 
 		/**

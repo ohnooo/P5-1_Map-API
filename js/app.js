@@ -120,9 +120,10 @@ var ViewModel = function(MapApp){
 	}
 
 	// Navigation for mobile
-	self.isDrawerOpen = ko.observable(false);
+	self.isDrawerOpen = ko.observable(true);
 	self.navVisible = ko.pureComputed(function(){
 		// when statment is TRUE use 'nav' : when statment False use 'navDisplayNon'
+		// http://codepen.io/SittingFox/pen/NGwZvm?editors=101
 		return self.isDrawerOpen() === false ? 'nav' : 'navDisplayNon';
 	}, this);
 
