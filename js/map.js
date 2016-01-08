@@ -54,6 +54,8 @@
 
 			google.maps.event.addListener(marker, 'click', function(){
 				setInfoWindow(marker, name, address, infowindow);
+				// Hide navigation viewed on mobile
+    			// vm.hideNav();
 			});
 
 			// Check if call back is function

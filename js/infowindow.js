@@ -10,6 +10,9 @@
 // google geocoder service request
 function setInfoWindow(marker, name, address, infowindow){
 
+    // Hide navigation if in mobile viewport
+    vm.hideNav();
+
 	//animate the marker for 1500 ms
 	marker.setAnimation(google.maps.Animation.BOUNCE);
 		setTimeout(function() {
