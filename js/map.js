@@ -45,13 +45,18 @@
 			var name = address.split(',')[0];;
 			// https://developers.google.com/maps/documentation/javascript/geocoding
 
-			//console.log(name);
+			// Custom marker
+			var markerIcon = {
+				url: 'image/android-locate.png',
+				scaledSize: new google.maps.Size(30,30)
+			};
 
 			var marker = new google.maps.Marker({
 				map: map,
 				position: placeData.geometry.location,
 				// not sure yet
-				title: name
+				title: name,
+				icon:markerIcon
 			});
 
 			//extend the bounds to include each marker's position
