@@ -177,7 +177,9 @@ var InitialApp = function(){
 	ko.applyBindings(vm);
 };
 
-
+var MapError = function(){
+	$('.map').html('<h5>Unavle to load google maps, please try again later</h5>');
+};
 
 
 
