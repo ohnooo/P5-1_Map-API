@@ -103,7 +103,7 @@ var ViewModel = function(MapApp){
 				}else{
 					item.marker.setVisible(false);
 				}
-			};
+			}
 
 			return visibleLocation;
 		});
