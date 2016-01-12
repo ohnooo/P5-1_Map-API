@@ -117,7 +117,7 @@ var ViewModel = function(MapApp){
 		//console.log(place);
 		google.maps.event.trigger(place.marker, 'click');
 		self.hideNav();
-	}
+	};
 
 	// Navigation for mobile
 	self.isDrawerOpen = ko.observable(true);
@@ -132,7 +132,7 @@ var ViewModel = function(MapApp){
 			self.hideNav();
 		}else{
 			self.showNav();
-		};
+		}
 	};
 
 	self.hideNav = function (toggleNav){
@@ -143,13 +143,13 @@ var ViewModel = function(MapApp){
 	self.showNav = function (toggleNav){
 		self.isDrawerOpen(false);
 		//return true;
-	}
+	};
 
 	// Check Data
 	self.checkPlaceObject = function(){
 		self.allPlaces().forEach(function(place){
 			console.log(place);
-		})
+		});
 	};
 
 

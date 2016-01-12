@@ -42,7 +42,7 @@
 			var lat = placeData.geometry.location.lat();	// latitude -> place service
 			var lon = placeData.geometry.location.lng();	// longitude -> place service
 			var address = placeData.formatted_address;
-			var name = address.split(',')[0];;
+			var name = address.split(',')[0];
 			// https://developers.google.com/maps/documentation/javascript/geocoding
 
 			// Custom marker
