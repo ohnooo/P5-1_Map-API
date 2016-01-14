@@ -9,8 +9,7 @@
 // @param : {address} - formatted address
 // google geocoder service request
 function setInfoWindow(marker, name, address, infowindow){
-
-    // Hide navigation if in mobile viewport
+    // Hide navigation viewed on mobile
     vm.hideNav();
 
 	//animate the marker for 1500 ms
